@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+*:root {
+    --color-base-follow: #ff0033;
+    --color-base-subscribe: #ff9100;
+    --color-base-Resub: #00ccff;
+    --color-base-gift-sub: #525dff;
+    --color-base-cheers: #a200ff;
+    --color-base-raid: #00ff9d;
+    --color-base-donation: #9dff00;
+
+    --case-bg-min-width: 55rem;
+    --case-bg-min-height: 15rem;
+}
+
+/* ====== ESCENARIO DE PRUEBA ====== */
+body {
+    min-height: 100vh;
+    background: #7e7e7e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cinzel', serif;
+    overflow: hidden;
+}
+
+/* Botón para re-disparar la animación durante la prueba */
+.replay-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: var(--color-base-follow);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.replay-btn:hover {
+    background: var(--color-base-follow);
+}
+
+/* ====== CONTENEDOR PRINCIPAL DE LA ALERTA ====== */
+.alert-wrapper {
+    position: relative;
+    width: 800px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====== FONDO DE PAPEL ARRUGADO (simulado con gradient + textura SVG) ====== */
+.paper-bg {
+    display: flex;
+    position: relative;
+    min-width: var(--case-bg-min-width);
+    min-height: var(--case-bg-min-height);
+    background: #242424;
+    background: linear-gradient(90deg, rgba(36, 36, 36, 0) 0%, rgba(36, 36, 36, 1) 25%, rgba(36, 36, 36, 1) 75%, rgba(36, 36, 36, 0) 100%);
+    justify-content: center;
+    /* align-items: center; */
+    /* box-shadow:
+        0 0 30px rgba(255, 0, 51, 0.4),
+        inset 0 0 50px rgba(0, 0, 0, 0.8); */
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Líneas rojas superior e inferior del papel */
+.paper-bg::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-base-follow) 50%, transparent);
+}
+
+.paper-bg::after {
+    bottom: 0;
+}
+
+/* ====== TEXTO ====== */
+.content {
+    text-align: center;
+    z-index: 2;
+}
+
+.title {
+    font-size: 1.7rem;
+    margin-top: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    /* letter-spacing: 2px;
+    font-style: italic; */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: glitchIn 0.8s ease-out;
+}
+
+.username {
+    margin-top: 2.3rem;
+    font-size: 2.5rem;
+    color: var(--color-base-follow);
+    font-weight: 700;
+    text-shadow: 0 0 8px var(--color-base-follow);
+    animation: slideUp 1s ease-out 0.3s both;
+    z-index: 100;
+}
+
+.star-center-t,
+.star-center-b {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    z-index: -1;
+}
+
+.star-center-t {
+    top: -5rem;
+}
+
+.star-center-b {
+    bottom: -5.3rem;
+}
+
+.star-center-t img,
+.star-center-b img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.center-wings-bottom {
+    position: absolute;
+    bottom: 0rem;
+    width: fit-content;
+    height: fit-content;
+    z-index: 10;
+    animation: slideUp 2s ease-out 0.8s both;
+}
+
+.center-wings-bottom img {
+    width: auto;
+    height: 9rem;
+}
+
+
+.center-Cuernos-bottom {
+    top: -2rem;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    z-index: 20;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.center-Cuernos-bottom img {
+    width: auto;
+    height: 13rem;
+}
+
+.center-stars_center-bottom {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    z-index: 20;
+    animation: fadeIn 2s ease-out;
+}
+
+.center-stars_center-bottom img {
+    margin-top: 2rem;
+    width: auto;
+    height: 7rem;
+}
+
+/* Línea roja central horizontal */
+.red-line {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-base-follow) 20%, var(--color-base-follow) 80%, transparent);
+    box-shadow: 0 0 10px var(--color-base-follow);
+    animation: lineExpand 0.8s ease-out 0.4s both;
+}
+
+
+/* ====== KEYFRAMES ====== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes glitchIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-15px);
+        filter: blur(8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 500px;
+        opacity: 1;
+    }
+}
