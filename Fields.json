@@ -1,0 +1,38 @@
+{
+    "alertColor": {
+        "type": "colorpicker",
+        "label": "Color de esta alerta",
+        "value": "#ff0033"
+    },
+    "alertTitle": {
+        "type": "text",
+        "label": "Título de la alerta",
+        "value": "Nuevo Suscriptor"
+    },
+    "msgAlertTemplate": {
+        "type": "text",
+        "label": "Plantilla del mensaje (usa {name}, {amount}, {months}, {tier}, {message})",
+        "value": "{name}"
+    },
+    "starsCenterImage": {
+        "type": "image-input",
+        "label": "Imagen stars center"
+    },
+    "cuernosImage": {
+        "type": "image-input",
+        "label": "Imagen cuernos"
+    },
+    "wingsImage": {
+        "type": "image-input",
+        "label": "Imagen alas (wings)"
+    },
+    "startopImage": {
+        "type": "image-input",
+        "label": "Imagen estrella superior/inferior"
+    },
+    "totalDuration": {
+        "type": "number",
+        "label": "Duración total (segundos)",
+        "value": 6
+    }
+}

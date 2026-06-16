@@ -10,19 +10,24 @@
 }
 
 *:root {
-    --color-base-follow: #ff0033;
-    --color-base-subscribe: #ff9100;
-    --color-base-Resub: #00ccff;
-    --color-base-gift-sub: #525dff;
-    --color-base-cheers: #a200ff;
-    --color-base-raid: #00ff9d;
-    --color-base-donation: #9dff00;
+
+    /*
+        --alert-color: #ff0033;
+        --color-base-subscribe: #ff9100;
+        --color-base-Resub: #00ccff;
+        --color-base-gift-sub: #525dff;
+        --color-base-cheers: #a200ff;
+        --color-base-raid: #00ff9d;
+        --color-base-donation: #9dff00;
+    */
+    --alert-color: {alertColor};
 
     --case-bg-min-width: 55rem;
     --case-bg-min-height: 15rem;
 }
 
 /* ====== ESCENARIO DE PRUEBA ====== */
+/*
 body {
     min-height: 100vh;
     background: #7e7e7e;
@@ -32,14 +37,16 @@ body {
     font-family: 'Cinzel', serif;
     overflow: hidden;
 }
+*/
 
 /* Botón para re-disparar la animación durante la prueba */
+/*
 .replay-btn {
     position: fixed;
     top: 20px;
     left: 20px;
     padding: 10px 20px;
-    background: var(--color-base-follow);
+    background: var(--alert-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -49,7 +56,19 @@ body {
 }
 
 .replay-btn:hover {
-    background: var(--color-base-follow);
+    background: var(--alert-color);
+}
+*/
+
+/* ====== ALERTA ====== */
+body {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cinzel', serif;
+    overflow: hidden;
 }
 
 /* ====== CONTENEDOR PRINCIPAL DE LA ALERTA ====== */
@@ -60,6 +79,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    animation: fadeIn 0.5s ease-out,
+    fadeOut 0.8s ease-in calc({ totalDuration}s - 0.8s) forwards;
 }
 
 /* ====== FONDO DE PAPEL ARRUGADO (simulado con gradient + textura SVG) ====== */
@@ -76,6 +98,7 @@ body {
         0 0 30px rgba(255, 0, 51, 0.4),
         inset 0 0 50px rgba(0, 0, 0, 0.8); */
     animation: fadeIn 0.5s ease-out;
+    z-index: 100;
 }
 
 /* Líneas rojas superior e inferior del papel */
@@ -85,7 +108,7 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-base-follow) 50%, transparent);
+    background: linear-gradient(90deg, transparent, var(--alert-color) 50%, transparent);
 }
 
 .paper-bg::after {
@@ -113,9 +136,9 @@ body {
 .username {
     margin-top: 2.3rem;
     font-size: 2.5rem;
-    color: var(--color-base-follow);
+    color: var(--alert-color);
     font-weight: 700;
-    text-shadow: 0 0 8px var(--color-base-follow);
+    text-shadow: 0 0 8px var(--alert-color);
     animation: slideUp 1s ease-out 0.3s both;
     z-index: 100;
 }
@@ -193,8 +216,8 @@ body {
     transform: translateX(-50%);
     width: 500px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-base-follow) 20%, var(--color-base-follow) 80%, transparent);
-    box-shadow: 0 0 10px var(--color-base-follow);
+    background: linear-gradient(90deg, transparent, var(--alert-color) 20%, var(--alert-color) 80%, transparent);
+    box-shadow: 0 0 10px var(--alert-color);
     animation: lineExpand 0.8s ease-out 0.4s both;
 }
 
@@ -257,5 +280,17 @@ body {
     to {
         width: 500px;
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
     }
 }
